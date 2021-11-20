@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            background-color: purple;
+            width: 200px;
+            height: 200px;
+        }
+        [v-cloak]{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="app" v-cloak> 
+        <button @click="isVisible = true">Show box</button> <!--button click後 變為true-->
+        <div v-if="isVisible" class="box"></div> <!--預設為false-->
+
+        <button v-on:click="isVisible = !isVisible">Show and hide box</button> <!--button click後 變為true-->
+        <div v-if="isVisible" class="box"></div> <!--預設為false-->
+
+    </div>
+    <script src="https://unpkg.com/vue@next"></script> 
+    <script>
+        //Vue.js 的元件就是個可以被重複使用的實體,每一個元件都可以有自己的 data、computed、methods
+        let app = Vue.createApp({
+            data: function(){  //data function 需要使用function並return
+                return{
+                    greeting:"Hello vue 3",
+                    isVisible:false,
+                    
+                }
+            }
+        })  //Vue 3.0 開始,建立元件前,需要先透過 Vue.createApp() 建立一個新的實體
+        app.mount('#app') //將元件 app 內容掛載至 id=app DOM上
+    </script>
+
+</body>
+</html>
